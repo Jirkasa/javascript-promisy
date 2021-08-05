@@ -1,0 +1,14 @@
+.home-welcome-section {
+    height: 100vh;
+
+    // Background
+    background-image: linear-gradient(rgba(darken(@colors[grey], 30%), .7), rgba(darken(@colors[grey], 30%), .7)), url(../../media/img/CodeBackground.jpg);
+    background-size: cover;
+
+    &__content {
+        max-width: @grid-width;
+        width: 100%;
+        margin: 0 auto;
+        #center-pos-abs();
+    }
+}

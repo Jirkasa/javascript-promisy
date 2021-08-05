@@ -3,3 +3,22 @@
 body {
     font-family: 'Open Sans', sans-serif;
 }
+
+.home-welcome-heading {
+    font-size: 3.2rem;
+    font-weight: 300;
+
+    text-align: center;
+    text-transform: uppercase;
+    color: @colors[white];
+
+    &__part {
+        display: inline-block;
+        padding: .5rem 1.5rem;
+        background-color: rgba(@colors[grey], .9);
+
+        &:not(:last-child) {
+            margin-bottom: 1.5rem;
+        }
+    }
+}
