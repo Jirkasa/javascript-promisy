@@ -45,7 +45,7 @@
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Doufám že jste třeba alespoň trochu pochopili jak Call Stack funguje a pokud ne, tak jsem zde pro vás ještě připravil takovou ukázku na kterou se můžete podívat. Možná to z ní pochopíte lépe než z textu.</p> -->
                 <h2 class="heading-secondary">JavaScript je jednovláknový</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">JavaScript umí dělat jen jednu věc najednou. Neumí například něco vypisovat do konzole a zároveň při tom něco počítat, musí to udělat zvlášť. Následující ukázka ukazuje, že když například použijeme funkci alert, tak JavaScript musí počkat až uživatel zavře vyskakovací okno a až poté může pokračovat v provádění kódu. Možná to úplně nesouvisí s tím že je JavaScript jednovláknový, ale rozhodně to ukazuje že se jednotlivé příkazy musí vykonat postupně.</p>
-                <div class="code-with-console" id="Example-Alert">
+                <div class="code-with-console u-margin-bottom-small" id="Example-Alert">
                     <div class="code-with-console__code-box">
                         <div class="code-with-console__code">
                             <span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;prvn&#xED;&#x22;</span><span class="yellow-span">)</span>;<br>
@@ -57,6 +57,44 @@
                     </div>
                     <div class="code-with-console__console" id="Example-Alert__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
                 </div>
+                <h3 class="heading-secondary">Co je to callback?</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">V předchozí ukázce kódu JavaScript při zavolání funkce alert přestane vykonávat kód a počká až zavřeme vyskakovací okno. U některých funkcí ale JavaScript nečeká a namísto toho pokračuje dál. Příkladem může být funkce setTimeout, kterou když zavoláme tak se po nějakém stanoveném čase zavolá předaná funkce. JavaScript nebude čekat až přijde čas funkci zavolat, namísto toho bude pokračovat v provádění dalšího kódu a zjišťování jestli už je potřeba funkci zavolat nebo ne ho vůbec nezajímá. Některé operace totiž JavaScript na starosti nemá. Funkci setTimeout má na starosti prohlížeč, JavaScript mu jen řekne že ji má provést. Zavoláním funkce setTimeout prohlížeči JavaScript řekne: "za tento čas mě informuj o tom že mám vykonat tuto funkci". JavaScript tedy při volání funkce setTimeout prohlížeči předává funkci, které se říká callback. Callback je funkce, kterou předáváme jiné funkci aby ji zavolala až dokončí svoji práci. Callbacky používáme tam, kde trvá delší čas než se provede nějaká operace, například při získávání dat z API.</p>
+                <div class="code-with-console u-margin-bottom-small" id="Example-SetTimeout">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;prvn&#xED;&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="dark-yellow-span">setTimeout</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{&#xA0;</span><span class="grey-span">// p&#x159;ed&#xE1;n&#xED; callbacku</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;t&#x159;et&#xED;&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">}</span>,&#xA0;<span class="light-green-span">1000</span><span class="yellow-span">)</span>;<br>
+                            <span class="grey-span">// JavaScript ne&#x10D;ek&#xE1; a&#x17E; ub&#x11B;hna jedna sekunda, jede d&#xE1;l</span><br>
+                            <span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;druh&#xFD;&#x22;</span><span class="yellow-span">)</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-SetTimeout__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+                <h3 class="heading-secondary">Co je to Callback Hell?</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Callbacky do sebe můžeme navzájem vnořovat. Uvnitř callback funkce můžeme zavolat nějakou další funkci, která přijímá jako argument callback a tak dále. Pro jednoduchost si v následující ukázce ukážeme vnořování callbacků s funkcí setTimeout i když bychom při jejím použití v praxi vnořování callbacků nemuseli použít. Po každé minutě budeme chtít aby se vypsala jiná zpráva, takže do sebe navzájem budeme vnořovat funkce setTimeout s callbacky.</p>
+                <div class="code-with-console u-margin-bottom-small" id="Example-Callback-Hell">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="dark-yellow-span">setTimeout</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;prvn&#xED;&#x22;</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="dark-yellow-span">setTimeout</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;druh&#xFD;&#x22;</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="dark-yellow-span">setTimeout</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;t&#x159;et&#xED;&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">&#xA0; &#xA0; &#xA0; &#xA0; }</span>,&#xA0;<span class="light-green-span">1000</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span>,&#xA0;<span class="light-green-span">1000</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">}</span>,&#xA0;<span class="light-green-span">1000</span><span class="yellow-span">)</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Callback-Hell__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Jak vidíte, takové vnořování kódu nevypadá vůbec hezky a dělá nám náš kód méně čitelnější. Říká se tomu Callback Hell (callbackové peklo). Proto byly do JavaScriptu přidány promisy, které tento problém řeší.</p>
             </main>
         </div>
     </div>
