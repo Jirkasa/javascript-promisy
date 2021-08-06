@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="../media/css/icofont.min.css">
     <link rel="stylesheet" href="../media/css/style.css">
 
     <title>JS Promisy - Callback Hell</title>
@@ -43,12 +44,27 @@
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Call Stack si můžeme představit například jako listy papíru naskládaných na sebe v krabici, na kterých má JavaScript napsáno kde skončil než šel vykonávat kód do jiných funkcí. Vždy když JavaScript narazí na volání nějaké funkce, tak si můžeme představit že si vezme nový papír, napíše si na něj kde skončil a uloží si jej do krabice, kterou používá pro odkládání svých poznámek. Poté JavaScript zajde funkci vykonat a může tam třeba narazit na další volání funkce. Takže si opět vezme nový papír, napíše si na něj kde skončil a uloží jej do krabice na papír, který si vytvořil předtím. Až JavaScript funkci vykoná, tak nebude vědět kde skončil, a tak se bude muset podívat do krabice. V krabici jsou papíry naskládány na sobě a JavaScript může vzít jen poslední papír, který tam vložil. Vezme jej tedy, podívá se kde si zapsal že skončil, vrátí se na to místo a pokračuje dále ve vykonávání kódu.</p>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Doufám že jste třeba alespoň trochu pochopili jak Call Stack funguje a pokud ne, tak jsem zde pro vás ještě připravil takovou ukázku na kterou se můžete podívat. Možná to z ní pochopíte lépe než z textu.</p> -->
                 <h2 class="heading-secondary">JavaScript je jednovláknový</h2>
-                <p class="paragraph paragraph--right-padding u-margin-bottom-small">JavaScript umí dělat jen jednu věc najednou. Neumí například něco vypisovat do konzole a zároveň při tom něco počítat, musí to udělat zvlášť. Následující ukázka ukazuje, že když například použijeme funkci alert, tak JavaScript musí počkat až uživatel zavře vyskakovací okno a až poté může pokračovat v provádění kódu.</p>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">JavaScript umí dělat jen jednu věc najednou. Neumí například něco vypisovat do konzole a zároveň při tom něco počítat, musí to udělat zvlášť. Následující ukázka ukazuje, že když například použijeme funkci alert, tak JavaScript musí počkat až uživatel zavře vyskakovací okno a až poté může pokračovat v provádění kódu. Možná to úplně nesouvisí s tím že je JavaScript jednovláknový, ale rozhodně to ukazuje že se jednotlivé příkazy musí vykonat postupně.</p>
+                <div class="code-with-console" id="Example-Alert">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;prvn&#xED;&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="dark-yellow-span">alert</span><span class="yellow-span">(</span><span class="orange-span">&#x22;zav&#x159;en&#xED;m tohoto okna bude moci JavaScript pokra&#x10D;ovat ve vykon&#xE1;v&#xE1;n&#xED; k&#xF3;du&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;druh&#xFD;&#x22;</span><span class="yellow-span">)</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Alert__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
             </main>
         </div>
     </div>
     <footer class="footer">
         Copyright &copy; by Jiří Satora
     </footer>
+
+    <script src="../media/js/callback-hell-config.js"></script>
+    <script src="../media/js/code-with-console.js"></script>
 </body>
 </html>
