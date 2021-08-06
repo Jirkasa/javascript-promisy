@@ -121,6 +121,7 @@ body {
   width: 100%;
   position: absolute;
   top: 0;
+  z-index: 30;
   background-color: rgba(60, 70, 78, 0.8);
 }
 .header--scrollable {
