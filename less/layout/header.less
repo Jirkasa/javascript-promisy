@@ -1,10 +1,16 @@
 .header {
-    height: 10rem;
+    height: 6rem;
     width: 100%;
     position: absolute;
     top: 0;
 
     background-color: rgba(@colors[grey], .8);
+
+    &--scrollable {
+        position: fixed;
+        background-image: linear-gradient(rgba(@colors[grey], .8), rgba(@colors[grey], .8)), linear-gradient(rgba(darken(@colors[grey], 30%), .7), rgba(darken(@colors[grey], 30%), .7)), url(../../media/img/CodeBackground.jpg);
+        background-size: cover;
+    }
 
     &__content {
         height: 100%;
