@@ -50,6 +50,27 @@ body {
 .home-welcome-heading__part:not(:last-child) {
   margin-bottom: 1.5rem;
 }
+.heading-primary {
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: #626f76;
+}
+.heading-secondary {
+  font-size: 2.5rem;
+  color: #626f76;
+}
+.heading-tertiary {
+  font-size: 2rem;
+  color: #626f76;
+}
+.paragraph {
+  font-size: 1.7rem;
+  line-height: 1.4;
+  color: #626f76;
+}
+.paragraph--right-padding {
+  padding-right: 10rem;
+}
 .u-margin-bottom-small {
   margin-bottom: 1rem !important;
 }
@@ -58,6 +79,9 @@ body {
 }
 .u-margin-bottom-large {
   margin-bottom: 3rem !important;
+}
+.u-center-text {
+  text-align: center !important;
 }
 .header {
   height: 6rem;
@@ -80,6 +104,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.footer {
+  font-size: 1.6rem;
+  text-align: center;
+  background-color: #353f47;
+  color: #7d8c96;
+  padding: 1rem;
 }
 .home-link:link,
 .home-link:visited {
@@ -124,4 +155,20 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.article-page {
+  display: flex;
+  margin-top: 6rem;
+}
+.article-page__nav-side {
+  flex: 0 0 28rem;
+  background-color: #4bcaff;
+}
+.article-page__content-side {
+  flex: 1;
+}
+.article-page__content {
+  max-width: 170rem;
+  margin: 0 auto;
+  padding: 3rem;
 }
