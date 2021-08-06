@@ -1,0 +1,32 @@
+.header-nav {
+    ul {
+        display: flex;
+        list-style: none;
+    }
+
+    &__item {
+        &:not(:last-child) {
+            margin-right: 1.5rem;
+        }
+    }
+
+    &__link {
+        &:link, &:visited {
+            font-size: 1.7rem;
+    
+            text-transform: uppercase;
+            text-decoration: none;
+            color: @colors[white];
+
+            padding: 1rem 1.5rem;
+            border: 2px solid transparent;
+
+            transition: all .1s;
+        }
+
+        &:hover {
+            border-color: @colors[light-blue];
+            color: @colors[light-blue];
+        }
+    }
+}

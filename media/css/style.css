@@ -12,28 +12,28 @@ body {
   box-sizing: border-box;
 }
 @font-face {
-  font-family: 'Open Sans';
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/opensans/v21/mem5YaGs126MiZpBA-UN_r8-VQ.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/roboto/v27/KFOlCnqEu92Fr1MmSU5vAw.ttf) format('truetype');
 }
 @font-face {
-  font-family: 'Open Sans';
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/opensans/v21/mem8YaGs126MiZpBA-U1Ug.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Me5Q.ttf) format('truetype');
 }
 @font-face {
-  font-family: 'Open Sans';
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/opensans/v21/mem5YaGs126MiZpBA-UN7rg-VQ.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/roboto/v27/KFOlCnqEu92Fr1MmWUlvAw.ttf) format('truetype');
 }
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 .home-welcome-heading {
   font-size: 3.2rem;
@@ -58,6 +58,52 @@ body {
 }
 .u-margin-bottom-large {
   margin-bottom: 3rem !important;
+}
+.header {
+  height: 10rem;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  background-color: rgba(60, 70, 78, 0.8);
+}
+.header__content {
+  height: 100%;
+  width: 100%;
+  max-width: 114rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.home-link:link,
+.home-link:visited {
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+}
+.header-nav ul {
+  display: flex;
+  list-style: none;
+}
+.header-nav__item:not(:last-child) {
+  margin-right: 1.5rem;
+}
+.header-nav__link:link,
+.header-nav__link:visited {
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border: 2px solid transparent;
+  transition: all 0.1s;
+}
+.header-nav__link:hover {
+  border-color: #4bcaff;
+  color: #4bcaff;
 }
 .home-welcome-section {
   height: 100vh;
