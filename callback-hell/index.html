@@ -31,13 +31,23 @@
     </header>
     <div class="article-page">
         <nav class="article-page__nav-side">
-            s
+            <ul class="navigation">
+                <li class="navigation__item">
+                    <a href="#javascript-je-jednovlaknovy" class="navigation__link">JavaScript je jednovláknový</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#co-je-to-callback" class="navigation__link">Co je to callback?</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#co-je-to-callback-hell" class="navigation__link">Co je to Callback Hell?</a>
+                </li>
+            </ul>
         </nav>
         <div class="article-page__content-side">
             <main class="article-page__content">
                 <h1 class="heading-primary u-center-text u-margin-bottom-small">Callback Hell</h1>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-medium">V tomto článku se dozvíte co je to Callback Hell (callbackové peklo). Ještě předtím si ale musíme říct co to jsou callbacky a proč se v JavaScriptu používají nebo používaly.</p>
-                <h2 class="heading-secondary">JavaScript je jednovláknový</h2>
+                <h2 class="heading-secondary"><span id="javascript-je-jednovlaknovy"></span>JavaScript je jednovláknový</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">JavaScript umí dělat jen jednu věc najednou. Neumí například něco vypisovat do konzole a zároveň při tom něco počítat, musí to udělat zvlášť. Následující ukázka ukazuje, že když například použijeme funkci alert, tak JavaScript musí počkat až uživatel zavře vyskakovací okno a až poté může pokračovat v provádění kódu. Možná to úplně nesouvisí s tím že je JavaScript jednovláknový, ale rozhodně to ukazuje že se jednotlivé příkazy musí vykonat postupně.</p>
                 <div class="code-with-console u-margin-bottom-small" id="Example-Alert">
                     <div class="code-with-console__code-box">
@@ -51,7 +61,7 @@
                     </div>
                     <div class="code-with-console__console" id="Example-Alert__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
                 </div>
-                <h3 class="heading-secondary">Co je to callback?</h3>
+                <h3 class="heading-secondary"><span id="co-je-to-callback"></span>Co je to callback?</h3>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">V předchozí ukázce kódu JavaScript při zavolání funkce alert přestane vykonávat kód a počká až zavřeme vyskakovací okno. U některých funkcí ale JavaScript nečeká a namísto toho pokračuje dál. Příkladem může být funkce setTimeout, kterou když zavoláme tak se po nějakém stanoveném čase zavolá předaná funkce. JavaScript nebude čekat až přijde čas funkci zavolat, namísto toho bude pokračovat v provádění dalšího kódu a zjišťování jestli už je potřeba funkci zavolat nebo ne ho vůbec nezajímá. Některé operace totiž JavaScript na starosti nemá. Funkci setTimeout má na starosti prohlížeč, JavaScript mu jen řekne že ji má provést. Zavoláním funkce setTimeout prohlížeči JavaScript řekne: "za tento čas mě informuj o tom že mám vykonat tuto funkci". JavaScript tedy při volání funkce setTimeout prohlížeči předává funkci, které se říká callback. Callback je funkce, kterou předáváme jiné funkci aby ji zavolala až dokončí svoji práci. Callbacky používáme tam, kde trvá delší čas než se provede nějaká operace, například při získávání dat z API.</p>
                 <div class="code-with-console u-margin-bottom-small" id="Example-SetTimeout">
                     <div class="code-with-console__code-box">
@@ -68,7 +78,7 @@
                     </div>
                     <div class="code-with-console__console" id="Example-SetTimeout__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
                 </div>
-                <h3 class="heading-secondary">Co je to Callback Hell?</h3>
+                <h3 class="heading-secondary"><span id="co-je-to-callback-hell"></span>Co je to Callback Hell?</h3>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Callbacky do sebe můžeme navzájem vnořovat. Uvnitř callback funkce můžeme zavolat nějakou další funkci, která přijímá jako argument callback a tak dále. Pro jednoduchost si v následující ukázce ukážeme vnořování callbacků s funkcí setTimeout i když bychom při jejím použití v praxi vnořování callbacků nemuseli použít. Po každé minutě budeme chtít aby se vypsala jiná zpráva, takže do sebe navzájem budeme vnořovat funkce setTimeout s callbacky.</p>
                 <div class="code-with-console u-margin-bottom-small" id="Example-Callback-Hell">
                     <div class="code-with-console__code-box">

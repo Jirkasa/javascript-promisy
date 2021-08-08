@@ -31,13 +31,20 @@
     </header>
     <div class="article-page">
         <nav class="article-page__nav-side">
-            s
+            <ul class="navigation">
+                <li class="navigation__item">
+                    <a href="#klicove-slovo-async" class="navigation__link">Klíčové slovo async</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#klicove-slovo-await" class="navigation__link">Klíčové slovo await</a>
+                </li>
+            </ul>
         </nav>
         <div class="article-page__content-side">
             <main class="article-page__content">
                 <h1 class="heading-primary u-center-text u-margin-bottom-small">Async a Await</h1>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-medium">V tomto článku se dozvíte jak můžete používat klíčová slova Async a Await. Jde o syntaktický cukřík, který nám může v některých případech zpříjemnit psaní Promisů a náš kód navíc bude vypadat lépe.</p>
-                <h2 class="heading-secondary">Klíčové slovo async</h2>
+                <h2 class="heading-secondary"><span id="klicove-slovo-async"></span>Klíčové slovo async</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Klíčové slovo async můžeme použít, pokud chceme aby funkce vracela Promise. Stačí jej připsat před deklaraci funkce. Pokud v async funkci něco vrátíme, tak se to použije jako hodnota Promisu. Následující ukázka ukazuje funkci, která počítá součet dvou čísel. K této operaci bychom sice nepotřebovali aby funkce vracela Promise, ale v této ukázce jsem to tak udělal abych ukázal, že když před funkci napíšeme klíčové slovo async, funkce bude vracet Promise.</p>
                 <div class="code-with-console u-margin-bottom-small" id="Example-Async-Function">
                     <div class="code-with-console__code-box">
@@ -80,7 +87,7 @@
                     </div>
                     <div class="code-with-console__console" id="Example-Async-Function-Throw-Error__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
                 </div>
-                <h2 class="heading-secondary">Klíčové slovo await</h2>
+                <h2 class="heading-secondary"><span id="klicove-slovo-await"></span>Klíčové slovo await</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí klíčového slova await můžeme pozastavit provádění kódu uvnitř async funkce do té doby než se provede nějaká asynchronní operace. Pokud před nějaký Promise v async funkci napíšeme klíčové slovo await, tak se provádění kódu zastaví do té doby než se Promise splní.</p>
                 <div class="code-with-console u-margin-bottom-small" id="Example-Await">
                     <div class="code-with-console__code-box">

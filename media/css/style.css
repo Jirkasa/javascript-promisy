@@ -7,6 +7,7 @@
 }
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 body {
   box-sizing: border-box;
@@ -58,6 +59,10 @@ body {
 .heading-secondary {
   font-size: 2.5rem;
   color: #626f76;
+}
+.heading-secondary span {
+  position: relative;
+  bottom: 6.4rem;
 }
 .heading-tertiary {
   font-size: 2rem;
@@ -301,6 +306,50 @@ body {
 .code-with-console__reset-btn:hover {
   background-color: #e6a800;
 }
+.navigation {
+  padding: 0.5rem;
+  list-style: none;
+  position: sticky;
+  top: 6rem;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+}
+.navigation::-webkit-scrollbar {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+.navigation::-webkit-scrollbar-track {
+  background: #007db1;
+}
+.navigation::-webkit-scrollbar-thumb {
+  background: #313940;
+  border-radius: 4px;
+  border: 2px solid #99a5ad;
+}
+.navigation::-webkit-scrollbar-thumb:hover {
+  background: #47535c;
+}
+.navigation__item:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+.navigation__link:link,
+.navigation__link:visited {
+  display: block;
+  font-size: 1.8rem;
+  color: #fff;
+  background-color: #3c464e;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 4px;
+  padding: 0.8rem;
+  transition: all 0.1s;
+}
+.navigation__link:hover {
+  background-color: #313940;
+}
+.navigation__link:active {
+  background-color: #262c31;
+}
 .home-welcome-section {
   height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../../media/img/CodeBackground.jpg);
@@ -322,7 +371,8 @@ body {
 }
 .article-page__nav-side {
   flex: 0 0 28rem;
-  background-color: #4bcaff;
+  background-color: #18bbff;
+  background-image: linear-gradient(to right, #0096d5, #18bbff 30%, #18bbff 70%, #0096d5);
 }
 .article-page__content-side {
   flex: 1;

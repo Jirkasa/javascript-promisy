@@ -1,0 +1,64 @@
+.navigation {
+    padding: .5rem;
+    list-style: none;
+
+    position: sticky;
+    top: 6rem;
+
+    max-height: calc(100vh - 6rem);
+    overflow-y: auto;
+
+    // width
+    &::-webkit-scrollbar {
+        width: 1.4rem;
+        height: 1.4rem;
+    }
+    
+    // track
+    &::-webkit-scrollbar-track {
+        background: darken(@colors[light-blue], 30%);
+    }
+    
+    // handle
+    &::-webkit-scrollbar-thumb {
+        background: darken(@colors[grey], 5%);
+        border-radius: 4px;
+        border: 2px solid lighten(@colors[light-grey], 10%);
+
+        &:hover {
+            background: lighten(@colors[grey], 5%);
+        }
+    }
+
+    &__item {
+        &:not(:last-child) {
+            margin-bottom: .5rem;
+        }
+    }
+
+    &__link {
+        &:link, &:visited {
+            display: block;
+            font-size: 1.8rem;
+
+            color: @colors[white];
+            background-color: @colors[grey];
+            text-decoration: none;
+            text-align: center;
+
+            // border: 3px solid lighten(@colors[grey], 50%);
+            border-radius: 4px;
+            padding: .8rem;
+
+            transition: all .1s;
+        }
+
+        &:hover {
+            background-color: darken(@colors[grey], 5%);
+        }
+
+        &:active {
+            background-color: darken(@colors[grey], 10%);
+        }
+    }
+}
