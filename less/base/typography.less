@@ -63,3 +63,16 @@ body {
         }
     }
 }
+
+.anchor {
+    &:link, &:visited {
+        font-weight: 700;
+        color: darken(@colors[light-blue], 20%);
+        text-decoration: none;
+        transition: all .1s;
+    }
+
+    &:hover {
+        color: darken(@colors[light-blue], 10%);
+    }
+}

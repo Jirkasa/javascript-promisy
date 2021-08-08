@@ -178,7 +178,7 @@
                 </div>
                 <h3 class="heading-tertiary">návratová hodnota metody then</h3>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Návratová hodnota metody then je ovlivněna tím, jestli něco v předávané funkci vrátíme nebo ne. Existuje pár pravidel, která určují jakou hodnotu metoda then vrátí. Tato pravidla se týkají funkce, která se volá když se Promise splní i funkce, která se volá když se Promise nesplní.</p>
-                <ul class="unordered-list u-margin-bottom-medium">
+                <ul class="unordered-list u-margin-bottom-small">
                     <li class="unordered-list__item">pokud předaná funkce vrátí nějakou hodnotu, tak se vrátí splněný Promise s vrácenou hodnotou funkce</li>
                     <li class="unordered-list__item">pokud předaná funkce nevrátí žádnou hodnotu, tak se vrátí splněný Promise</li>
                     <li class="unordered-list__item">pokud předaná funkce vyhodí chybu, tak se vrátí nesplněný Promise s vyhozenou chybou jako hodnotou</li>
@@ -186,9 +186,10 @@
                     <li class="unordered-list__item">pokud předaná funkce vrátí již nesplněný Promise, tak se vrátí nesplněný Promise, který bude mít stejnou hodnotu jako Promise vrácený předanou funkcí</li>
                     <li class="unordered-list__item">pokud předaná funkce vrátí Promise čekající na splnění, tak se počká až se Promise splní nebo nesplní a poté funkce then vrátí Promise, který bude stejný jako Promise, který předaná funkce vrátila</li>
                 </ul>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-medium"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then" target="_blank" class="anchor">Metoda then na MDN</a></p>
                 <h2 class="heading-secondary">Metoda catch</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Metodě catch předáváme jako parametr funkci, která se zavolá když se Promise nesplní. V podstatě se metoda catch chová stejně jako metoda then, s tím rozdílem že přijímá jen funkci, která se zavolá, když se Promise nesplní. Takže metoda catch také vrací Promise a platí pro ni stejná pravidla, která jsou uvedena u metody then. Chová se stejně jako bychom zavolali metodu then takto: ".then(undefined, () => { /* ... */ })".</p>
-                <div class="code-with-console u-margin-bottom-medium" id="Example-Catch">
+                <div class="code-with-console u-margin-bottom-small" id="Example-Catch">
                     <div class="code-with-console__code-box">
                         <div class="code-with-console__code">
                             <span class="blue-span">let&#xA0;</span><span class="light-blue-span">mujPromise</span>&#xA0;=&#xA0;<span class="blue-span">new&#xA0;</span><span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
@@ -214,9 +215,10 @@
                     </div>
                     <div class="code-with-console__console" id="Example-Catch__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
                 </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-medium"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch" target="_blank" class="anchor">Metoda catch na MDN</a></p>
                 <h2 class="heading-secondary">Metoda finally</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Kromě metod then a catch máme ještě k dispozici metodu finally. Této metodě můžeme předat funkci, která se zavolá když se Promise splní i nesplní. Můžeme se tedy použitím této funkce vyhnout zduplikovanému kódu v metodách then a catch pokud potřebujeme aby se nějaký kód spustil při splnění i nesplnění Promisu.</p>
-                <div class="code-with-console u-margin-bottom-medium" id="Example-Finally">
+                <div class="code-with-console u-margin-bottom-small" id="Example-Finally">
                     <div class="code-with-console__code-box">
                         <div class="code-with-console__code">
                             <span class="blue-span">let&#xA0;</span><span class="light-blue-span">mujPromise</span>&#xA0;=&#xA0;<span class="blue-span">new&#xA0;</span><span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
@@ -244,6 +246,7 @@
                     </div>
                     <div class="code-with-console__console" id="Example-Finally__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
                 </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-medium"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally" target="_blank" class="anchor">Metoda finally na MDN</a></p>
                 <h2 class="heading-secondary">Statické Promise metody</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Zde jsem vám vypsal všechny statické metody týkající se Promisů. Myslím že je ale pravděpodobně moc potřebovat nebudete.</p>
                 <h3 class="heading-tertiary">Promise.all</h3>
@@ -280,6 +283,7 @@
                     </div>
                     <div class="code-with-console__console" id="Example-Method-All__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
                 </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all" target="_blank" class="anchor">Metoda Promise.all na MDN</a></p>
                 <h3 class="heading-tertiary">Promise.any</h3>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tato metoda bere jako parametr Iterable objekt (třeba pole) s Promisy a vrací Promise, který se splní když se alespoň jeden z předaných Promisů splní. Hodnota tohoto Promisu bude stejná, jako hodnota Promisu, který se jako první splnil. Pokud se nesplní žádný z předaných Promisů, tak se vrátí nesplněný Promise, který bude mít jako hodnotu AggregateError.</p>
                 <div class="code-with-console u-margin-bottom-small" id="Example-Method-Any">
@@ -315,6 +319,7 @@
                     </div>
                     <div class="code-with-console__console" id="Example-Method-Any__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
                 </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any" target="_blank" class="anchor">Metoda Promise.any na MDN</a></p>
                 <h3 class="heading-tertiary">Promise.allSettled</h3>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tato metoda bere jako parametr Iterable objekt (třeba pole) s Promisy a vrací Promise, který se splní až se všechny předané Promisy splní nebo nesplní. Tento Promise bude mít jako hodnotu pole objektů, které obsahují status promisu a hodnotu promisu nebo důvod proč se Promise nesplnil.</p>
                 <div class="code-with-console u-margin-bottom-small" id="Example-Method-AllSettled">
@@ -350,6 +355,7 @@
                     </div>
                     <div class="code-with-console__console" id="Example-Method-AllSettled__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
                 </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled" target="_blank" class="anchor">Metoda Promise.allSettled na MDN</a></p>
                 <h3 class="heading-tertiary">Promise.race</h3>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tato metoda bere jako parametr Iterable objekt (třeba pole) s Promisy a vrací Promise, který se jako první splní nebo nesplní.</p>
                 <div class="code-with-console u-margin-bottom-small" id="Example-Method-Race">
@@ -372,6 +378,7 @@
                     </div>
                     <div class="code-with-console__console" id="Example-Method-Race__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
                 </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race" target="_blank" class="anchor">Metoda Promise.race na MDN</a></p>
                 <h3 class="heading-tertiary">Promise.resolve</h3>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tato metoda vrací splněný Promise. Jako parametr můžeme předat hodnotu, kterou bude Promise mít.</p>
                 <div class="code-with-console u-margin-bottom-small" id="Example-Method-Resolve">
@@ -387,9 +394,10 @@
                     </div>
                     <div class="code-with-console__console" id="Example-Method-Resolve__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
                 </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve" target="_blank" class="anchor">Metoda Promise.resolve na MDN</a></p>
                 <h3 class="heading-tertiary">Promise.reject</h3>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tato metoda vrací nesplněný Promise. Jako parametr můžeme předat hodnotu, kterou bude Promise mít.</p>
-                <div class="code-with-console" id="Example-Method-Reject">
+                <div class="code-with-console u-margin-bottom-small" id="Example-Method-Reject">
                     <div class="code-with-console__code-box">
                         <div class="code-with-console__code">
                             <span class="light-green-span">Promise</span>.<span class="dark-yellow-span">reject</span><span class="yellow-span">(</span><span class="orange-span">&#x22;nespln&#x11B;no&#x22;</span><span class="yellow-span">)</span><br>
@@ -402,7 +410,7 @@
                     </div>
                     <div class="code-with-console__console" id="Example-Method-Reject__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
                 </div>
-                 <!-- na konec přidám odkazy na MDN, kde by se mohli dozvědět více pokud by jim nebylo něco jasné -->
+                <p class="paragraph paragraph--right-padding"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject" target="_blank" class="anchor">Metoda Promise.reject na MDN</a></p>
             </main>
         </div>
     </div>

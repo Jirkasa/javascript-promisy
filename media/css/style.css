@@ -79,6 +79,16 @@ body {
 .unordered-list__item:not(:last-child) {
   margin-bottom: 0.5rem;
 }
+.anchor:link,
+.anchor:visited {
+  font-weight: 700;
+  color: #00a1e4;
+  text-decoration: none;
+  transition: all 0.1s;
+}
+.anchor:hover {
+  color: #18bbff;
+}
 .u-margin-bottom-small {
   margin-bottom: 1rem !important;
 }
