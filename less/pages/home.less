@@ -12,3 +12,37 @@
         #center-pos-abs();
     }
 }
+
+.home-articles-section {
+    background-color: @colors[white];
+
+    &__content {
+        max-width: @grid-width;
+        width: 100%;
+        margin: 0 auto;
+
+        padding: 3rem;
+    }
+
+    &__horizontal-rule {
+        max-width: 10rem;
+        width: 100%;
+        margin: 0 auto;
+
+        border: none;
+        height: 4px;
+        background-color: lighten(@colors[third-grey], 10%);
+    }
+
+    &__text {
+        max-width: @grid-width - (@grid-width/6);
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    &__articles {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 3rem;
+    }
+}
