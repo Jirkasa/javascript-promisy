@@ -71,6 +71,14 @@ body {
 .paragraph--right-padding {
   padding-right: 10rem;
 }
+.unordered-list {
+  list-style-position: inside;
+  font-size: 1.6rem;
+  color: #626f76;
+}
+.unordered-list__item:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
 .u-margin-bottom-small {
   margin-bottom: 1rem !important;
 }
@@ -300,6 +308,7 @@ body {
 .article-page {
   display: flex;
   margin-top: 6rem;
+  min-height: calc(100vh - 6rem - 3.9rem);
 }
 .article-page__nav-side {
   flex: 0 0 28rem;
@@ -307,6 +316,7 @@ body {
 }
 .article-page__content-side {
   flex: 1;
+  overflow: hidden;
 }
 .article-page__content {
   max-width: 170rem;

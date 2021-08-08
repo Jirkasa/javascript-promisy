@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../media/css/icofont.min.css">
+    <link rel="stylesheet" href="../media/css/style.css">
+
+    <title>JS Promisy</title>
+</head>
+<body>
+    <header class="header header--scrollable">
+        <div class="header__content">
+            <a href="../" class="home-link">JS Promisy</a>
+            <nav class="header-nav">
+                <ul>
+                    <li class="header-nav__item">
+                        <a href="../callback-hell/" class="header-nav__link">Callback Hell</a>
+                    </li>
+                    <li class="header-nav__item">
+                        <a href="../promisy/" class="header-nav__link header-nav__link--active">Promisy</a>
+                    </li>
+                    <li class="header-nav__item">
+                        <a href="#" class="header-nav__link">Async a Await</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="article-page">
+        <nav class="article-page__nav-side">
+            s
+        </nav>
+        <div class="article-page__content-side">
+            <main class="article-page__content">
+                <h1 class="heading-primary u-center-text u-margin-bottom-small">Promisy</h1>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-medium">V tomto článku se dozvíte co jsou to Promisy a jak je používat. Díky nim se vyhnete vnořování callbacků a váš kód bude čitelnější.</p>
+                <h2 class="heading-secondary">Co je to Promise a jak ho vytvořit</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Promise je objekt, který bude reprezentovat dokončení nebo selhání nějaké asynchronní operace. Do češtiny slovo promise přeložíme jako slib. Promise můžeme vytvořit pomocí konstrutoru Promise, kterému jako parametr předáme funkci, která přijímá dva parametry. Tyto parametry jsou v podstatě funkce, takže je potom v předané funkci můžeme zavolat. Pokud zavoláme první argument, tak jsme Promise splnili (splnili jsme slib), a pokud zavoláme druhý argument tak jsme Promise nesplnili (nesplnili jsme slib).</p>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Promise nám poskytuje dvě metody které se jmenují then a catch. Pomocí metody then můžeme nastavit funkci, která se zavolá když se Promise splní a pomocí metody catch můžeme nastavit funkci, která se zavolá když se Promise nesplní.</p>
+                <div class="code-with-console u-margin-bottom-medium" id="Example-Create-Promise">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="grey-span">// vytvo&#x159;en&#xED; Promisu</span><br>
+                            <span class="blue-span">let</span>&#xA0;<span class="light-blue-span">pujduBehat</span>&#xA0;=&#xA0;<span class="blue-span">new</span>&#xA0;<span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="blue-span">let&#xA0;</span><span class="light-blue-span">rand</span>&#xA0;=&#xA0;<span class="light-green-span">Math</span>.<span class="dark-yellow-span">random</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">if</span>&#xA0;<span class="yellow-span">(</span><span class="light-blue-span">rand</span>&#xA0;&#x3E;&#xA0;<span class="light-green-span">0.5</span><span class="yellow-span">) {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">resolve</span><span class="yellow-span">()</span>;&#xA0;<span class="grey-span">// spln&#x11B;n&#xED; Promisu</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}&#xA0;</span><span class="purple-span">else&#xA0;</span><span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">()</span>;&#xA0;<span class="grey-span">// nespln&#x11B;n&#xED; Promisu</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span><br>
+                            <span class="yellow-span">})</span>;<br>
+                            <span class="grey-span">// nastav&#xED;me funkci, kter&#xE1; se zavol&#xE1; kdy&#x17E; se Promise spln&#xED;</span><br>
+                            <span class="light-blue-span">pujduBehat</span>.<span class="dark-yellow-span">then</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;jdu b&#x11B;hat&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;<br>
+                            <span class="grey-span">// nastav&#xED;me funkci, kter&#xE1; se zavol&#xE1; kdy&#x17E; se Promise nespln&#xED;</span><br>
+                            <span class="light-blue-span">pujduBehat</span>.<span class="dark-yellow-span">catch</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;nejdu b&#x11B;hat&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Create-Promise__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+                <h2 class="heading-secondary">Předávání argumentů při splnění nebo nesplnění Promisu</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud chceme, tak můžeme při splnění nebo nesplnění Promisu předávat také nějaké argumenty. Následující ukázka ukazuje jak to provést.</p>
+                <div class="code-with-console u-margin-bottom-medium" id="Example-Arguments">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="blue-span">let</span>&#xA0;<span class="light-blue-span">mujPromise</span>&#xA0;=&#xA0;<span class="blue-span">new</span>&#xA0;<span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="blue-span">let&#xA0;</span><span class="light-blue-span">rand</span>&#xA0;=&#xA0;<span class="light-green-span">Math</span>.<span class="dark-yellow-span">random</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">if&#xA0;</span><span class="yellow-span">(</span><span class="light-blue-span">rand&#xA0;</span>&#x3E;&#xA0;<span class="light-green-span">0.5</span><span class="yellow-span">) {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">resolve</span><span class="yellow-span">(</span><span class="light-blue-span">rand</span><span class="yellow-span">)</span>;&#xA0;<span class="grey-span">// p&#x159;ed&#xE1;n&#xED; argumentu p&#x159;i spln&#x11B;n&#xED; Promisu</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span>&#xA0;<span class="purple-span">else</span>&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">(</span><span class="orange-span">&#x22;n&#x11B;co se pokazilo&#x22;</span><span class="yellow-span">)</span>;&#xA0;<span class="grey-span">// p&#x159;ed&#xE1;n&#xED; argumentu p&#x159;i nespl&#x11B;n&#xED; Promisu</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span><br>
+                            <span class="yellow-span">})</span>;<br>
+                            <span class="light-blue-span">mujPromise</span>.<span class="dark-yellow-span">then</span><span class="yellow-span">((</span><span class="light-blue-span">cislo</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;Promise byl spln&#x11B;n, hodnota: &#x22;</span>&#xA0;+&#xA0;<span class="light-blue-span">cislo</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;<br>
+                            <span class="light-blue-span">mujPromise</span>.<span class="dark-yellow-span">catch</span><span class="yellow-span">((</span><span class="light-blue-span">chyba</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;Promise nebyl spln&#x11B;n: &#x22;</span>&#xA0;+&#xA0;<span class="light-blue-span">chyba</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Arguments__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+                <h2 class="heading-secondary">Řetězení metod</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Vzhledem k tomu že funkce then vrací Promise, můžeme metodu then a catch zřetězit dohromady.</p>
+                <div class="code-with-console u-margin-bottom-small" id="Example-Chain-Then-And-Catch">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="blue-span">let</span>&#xA0;<span class="light-blue-span">pujduBehat</span>&#xA0;=&#xA0;<span class="blue-span">new</span>&#xA0;<span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="blue-span">let&#xA0;</span><span class="light-blue-span">rand</span>&#xA0;=&#xA0;<span class="light-green-span">Math</span>.<span class="dark-yellow-span">random</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">if</span>&#xA0;<span class="yellow-span">(</span><span class="light-blue-span">rand</span>&#xA0;&#x3E;&#xA0;<span class="light-green-span">0.5</span><span class="yellow-span">) {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">resolve</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}&#xA0;</span><span class="purple-span">else&#xA0;</span><span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span><br>
+                            <span class="yellow-span">})</span>;<br>
+                            <span class="light-blue-span">pujduBehat</span>.<span class="dark-yellow-span">then</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;jdu b&#x11B;hat&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span><br>
+                            .<span class="dark-yellow-span">catch</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;nejdu b&#x11B;hat&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Chain-Then-And-Catch__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">To jakou hodnotu metoda then vrátí záleží na tom jestli něco ve funkci, kterou jí předáváme vrátíme. O tom co metoda then vrátí v různých případech se můžete dočíst níže. Teď nám bude stačit vědět že když nevrátíme nic, tak se vrátí splněný Promise, a když vrátíme nový Promise, tak se vrátí splněný nebo nesplněný Promise, podle toho jestli se Promise splní nebo nesplní. Můžeme tedy když chceme na nějakou asynchronní operaci navázat jinou asynchronní operací v metodě then vrátit nový Promise a zřetězit další metodu then. Lépe to pravděpodobně pochopíte v následující ukázce. A protože Promise v naprosté většině případů nebudeme jen tak vytvářet ale vrátí nám jej nějaká funkce, tak je v následující ukázce vytvořena funkce, která vrací Promise.</p>
+                <div class="code-with-console u-margin-bottom-medium" id="Example-Chain-Promises">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="blue-span">function</span>&#xA0;<span class="dark-yellow-span">pockejChvili</span><span class="yellow-span">() {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">return&#xA0;</span><span class="blue-span">new&#xA0;</span><span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="blue-span">let</span>&#xA0;<span class="light-blue-span">cas</span>&#xA0;=&#xA0;<span class="light-green-span">500</span>&#xA0;+&#xA0;<span class="yellow-span">(</span><span class="light-green-span">Math</span>.<span class="dark-yellow-span">random</span><span class="yellow-span">()</span>&#xA0;*&#xA0;<span class="light-green-span">1000</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="dark-yellow-span">setTimeout</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="dark-yellow-span">resolve</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span>,&#xA0;<span class="light-blue-span">cas</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">})</span>;<br>
+                            <span class="yellow-span">}</span><br>
+                            <br>
+                            <span class="dark-yellow-span">pockejChvili</span><span class="yellow-span">()</span><br>
+                            .<span class="dark-yellow-span">then</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;první&#x22;</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">return&#xA0;</span><span class="dark-yellow-span">pockejChvili</span><span class="yellow-span">()</span>;<br>
+                            <span class="yellow-span">})</span><br>
+                            .<span class="dark-yellow-span">then</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;druhý&#x22;</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">return&#xA0;</span><span class="dark-yellow-span">pockejChvili</span><span class="yellow-span">()</span>;<br>
+                            <span class="yellow-span">})</span><br>
+                            .<span class="dark-yellow-span">then</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;třetí&#x22;</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">return&#xA0;</span><span class="dark-yellow-span">pockejChvili</span><span class="yellow-span">()</span>;<br>
+                            <span class="yellow-span">})</span><br>
+                            .<span class="dark-yellow-span">catch</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span>&#xA0;<span class="grey-span">// u tady toho p&#x159;kladu metodu catch ani nepot&#x159;ebujeme (i p&#x159;esto jsem ji sem ale napsal)</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;chyba&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Chain-Promises__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+                <h2 class="heading-secondary">Metoda then</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Metodě then předáváme jako parametr funkci, která se zavolá když se Promise splní. Ještě jí ale můžeme jako druhý parametr předat funkci, která se zavolá když se promise nesplní. Většinou ale budeme předávat jen funkci, která se zavolá když se Promise splní, tu druhou ve většině případů nepotřebujeme.</p>
+                <div class="code-with-console u-margin-bottom-small" id="Example-Then-Both-Arguments">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="blue-span">let&#xA0;</span><span class="light-blue-span">mujPromise</span>&#xA0;=&#xA0;<span class="blue-span">new&#xA0;</span><span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="blue-span">let&#xA0;</span><span class="light-blue-span">rand</span>&#xA0;=&#xA0;<span class="light-green-span">Math</span>.<span class="dark-yellow-span">random</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">if&#xA0;</span><span class="yellow-span">(</span><span class="light-blue-span">rand</span>&#xA0;&#x3E;&#xA0;<span class="light-green-span">0.5</span><span class="yellow-span">) {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">resolve</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span>&#xA0;<span class="purple-span">else&#xA0;</span><span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span><br>
+                            <span class="yellow-span">})</span>;<br>
+                            <br>
+                            <span class="light-blue-span">mujPromise</span>.<span class="dark-yellow-span">then</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span>&#xA0;<span class="grey-span">// funkce, kter&#xE1; se zavol&#xE1; kdy&#x17E; se Promise spln&#xED;</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;Promise spln&#x11B;n&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">}</span>,&#xA0;<span class="yellow-span">()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{&#xA0;</span><span class="grey-span">// funkce, kter&#xE1; se zavol&#xE1; kdy&#x17E; se Promise nespln&#xED;</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">Promise nebyl spln&#x11B;n&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Then-Both-Arguments__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+                <h3 class="heading-tertiary">návratová hodnota metody then</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Návratová hodnota metody then je ovlivněna tím, jestli něco v předávané funkci vrátíme nebo ne. Existuje pár pravidel, která určují jakou hodnotu metoda then vrátí. Tato pravidla se týkají funkce, která se volá když se Promise splní i funkce, která se volá když se Promise nesplní.</p>
+                <ul class="unordered-list u-margin-bottom-medium">
+                    <li class="unordered-list__item">pokud předaná funkce vrátí nějakou hodnotu, tak se vrátí splněný Promise s vrácenou hodnotou funkce</li>
+                    <li class="unordered-list__item">pokud předaná funkce nevrátí žádnou hodnotu, tak se vrátí splněný Promise</li>
+                    <li class="unordered-list__item">pokud předaná funkce vyhodí chybu, tak se vrátí nesplněný Promise s vyhozenou chybou jako hodnotou</li>
+                    <li class="unordered-list__item">pokud předaná funkce vrátí již splněný Promise, tak se vrátí splněný Promise, který bude mít stejnou hodnotu jako Promise vrácený předanou funkcí</li>
+                    <li class="unordered-list__item">pokud předaná funkce vrátí již nesplněný Promise, tak se vrátí nesplněný Promise, který bude mít stejnou hodnotu jako Promise vrácený předanou funkcí</li>
+                    <li class="unordered-list__item">pokud předaná funkce vrátí Promise čekající na splnění, tak se počká až se Promise splní nebo nesplní a poté funkce then vrátí Promise, který bude stejný jako Promise, který předaná funkce vrátila</li>
+                </ul>
+                <h2 class="heading-secondary">Metoda catch</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Metodě catch předáváme jako parametr funkci, která se zavolá když se Promise nesplní. V podstatě se metoda catch chová stejně jako metoda then, s tím rozdílem že přijímá jen funkci, která se zavolá, když se Promise nesplní. Takže metoda catch také vrací Promise a platí pro ni stejná pravidla, která jsou uvedena u metody then. Chová se stejně jako bychom zavolali metodu then takto: ".then(undefined, () => { /* ... */ })".</p>
+                <div class="code-with-console u-margin-bottom-medium" id="Example-Catch">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="blue-span">let&#xA0;</span><span class="light-blue-span">mujPromise</span>&#xA0;=&#xA0;<span class="blue-span">new&#xA0;</span><span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="blue-span">let&#xA0;</span><span class="light-blue-span">rand</span>&#xA0;=&#xA0;<span class="light-green-span">Math</span>.<span class="dark-yellow-span">random</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">if&#xA0;</span><span class="yellow-span">(</span><span class="light-blue-span">rand</span>&#xA0;&#x3E;&#xA0;<span class="light-green-span">0.5</span><span class="yellow-span">) {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">resolve</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span>&#xA0;<span class="purple-span">else&#xA0;</span><span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span><br>
+                            <span class="yellow-span">})</span>;<br>
+                            <br>
+                            <span class="light-blue-span">mujPromise</span><br>
+                            .<span class="dark-yellow-span">catch</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{&#xA0;</span><span class="grey-span">// metodu catch m&#x16F;&#x17E;eme zavolat i p&#x159;ed zavol&#xE1;n&#xED;m metody then, metoda catch ale vrac&#xED; spln&#x11B;n&#xFD; Promise, tak&#x17E;e se vol&#xE1; a&#x17E; na konci</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;Promise nebyl spln&#x11B;n&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span><br>
+                            .<span class="dark-yellow-span">then</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{&#xA0;</span><span class="grey-span">// tato metoda then se t&#xFD;k&#xE1; jen Promisu vr&#xE1;cen&#xE9;ho funkc&#xED; catch</span><br>
+                            <span class="grey-span">&#xA0; &#xA0; // metoda catch vrac&#xED; spln&#x11B;n&#xFD; Promise, tak&#x17E;e se provede i tento k&#xF3;d (i kdy&#x17E; se t&#x159;eba p&#x159;edan&#xE1; funkce metody catch neprovede)</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;Promise spln&#x11B;n&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Catch__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+                <h2 class="heading-secondary">Metoda finally</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Kromě metod then a catch máme ještě k dispozici metodu finally. Této metodě můžeme předat funkci, která se zavolá když se Promise splní i nesplní. Můžeme se tedy použitím této funkce vyhnout zduplikovanému kódu v metodách then a catch pokud potřebujeme aby se nějaký kód spustil při splnění i nesplnění Promisu.</p>
+                <div class="code-with-console u-margin-bottom-medium" id="Example-Finally">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="blue-span">let&#xA0;</span><span class="light-blue-span">mujPromise</span>&#xA0;=&#xA0;<span class="blue-span">new&#xA0;</span><span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="blue-span">let&#xA0;</span><span class="light-blue-span">rand</span>&#xA0;=&#xA0;<span class="light-green-span">Math</span>.<span class="dark-yellow-span">random</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">if&#xA0;</span><span class="yellow-span">(</span><span class="light-blue-span">rand</span>&#xA0;&#x3E;&#xA0;<span class="light-green-span">0.5</span><span class="yellow-span">) {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">resolve</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span>&#xA0;<span class="purple-span">else&#xA0;</span><span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span><br>
+                            <span class="yellow-span">})</span>;<br>
+                            <br>
+                            <span class="light-blue-span">mujPromise</span><br>
+                            .<span class="dark-yellow-span">then</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;Promise spln&#x11B;n&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span><br>
+                            .<span class="dark-yellow-span">catch</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;Promise nebyl spln&#x11B;n&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span><br>
+                            .<span class="dark-yellow-span">finally</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;funkce p&#x159;edan&#xE1; metod&#x11B; finally se zavol&#xE1; v&#x17E;dy&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Finally__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+                <h2 class="heading-secondary">Statické Promise metody</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Zde jsem vám vypsal všechny statické metody týkající se Promisů. Myslím že je ale pravděpodobně moc potřebovat nebudete.</p>
+                <h3 class="heading-tertiary">Promise.all</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tato metoda bere jako parametr Iterable objekt (třeba pole) s Promisy a vrací Promise, který se splní když se splní všechny předané Promisy a nesplní když se alespoň jeden předaný promise nesplní. Jako hodnotu bude tento Promise mít pole hodnot všech předaných promisů.</p>
+                <div class="code-with-console u-margin-bottom-small" id="Example-Method-All">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="blue-span">let</span>&#xA0;<span class="light-blue-span">promise1</span>&#xA0;=&#xA0;<span class="blue-span">new&#xA0;</span><span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">resolve</span><span class="yellow-span">(</span><span class="light-green-span">10</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;<br>
+                            <span class="blue-span">let</span>&#xA0;<span class="light-blue-span">promise2</span>&#xA0;=&#xA0;<span class="blue-span">new</span>&#xA0;<span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="dark-yellow-span">setTimeout</span><span class="yellow-span">(</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-green-span">500</span>,&#xA0;<span class="light-green-span">20</span><span class="yellow-span">)</span>;&#xA0;<span class="grey-span">// za p&#x16F;l sekundy zavol&#xE1; funkci resolve s argumentem 20</span><br>
+                            <span class="yellow-span">})</span>;<br>
+                            <span class="blue-span">let</span>&#xA0;<span class="light-blue-span">promise3</span>&#xA0;=&#xA0;<span class="blue-span">new&#xA0;</span><span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="blue-span">let</span>&#xA0;<span class="light-blue-span">rand</span>&#xA0;=&#xA0;<span class="light-green-span">Math</span>.<span class="dark-yellow-span">random</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">if&#xA0;</span><span class="yellow-span">(</span><span class="light-blue-span">rand</span>&#xA0;&#x3E;&#xA0;<span class="light-green-span">0.5</span><span class="yellow-span">) {</span><br>
+                            <span class="light-blue-span">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;resolve</span><span class="yellow-span">(</span><span class="light-green-span">30</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;promise3 se splnil&#x22;</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span>&#xA0;<span class="purple-span">else</span>&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;promise3 se nesplnil&#x22;</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span><br>
+                            <span class="yellow-span">})</span>;<br>
+                            <br>
+                            <span class="light-green-span">Promise</span>.<span class="dark-yellow-span">all</span><span class="yellow-span">([</span><span class="light-blue-span">promise1</span>,&#xA0;<span class="light-blue-span">promise2</span>,&#xA0;<span class="light-blue-span">promise3</span><span class="yellow-span">])</span>&#xA0;<span class="grey-span">// pokud v&#x161;echny t&#x159;i&#xA0;</span><br>
+                            .<span class="dark-yellow-span">then</span><span class="yellow-span">((</span><span class="light-blue-span">hodnoty</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;v&#x161;echny t&#x159;i Promisy se splnily&#x22;</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;hodnoty v&#x161;ech Promis&#x16F;:&#x22;</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="light-blue-span">hodnoty</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Method-All__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+                <h3 class="heading-tertiary">Promise.any</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tato metoda bere jako parametr Iterable objekt (třeba pole) s Promisy a vrací Promise, který se splní když se alespoň jeden z předaných Promisů splní. Hodnota tohoto Promisu bude stejná, jako hodnota Promisu, který se jako první splnil. Pokud se nesplní žádný z předaných Promisů, tak se vrátí nesplněný Promise, který bude mít jako hodnotu AggregateError.</p>
+                <div class="code-with-console u-margin-bottom-small" id="Example-Method-Any">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="blue-span">let&#xA0;</span><span class="light-blue-span">promise1</span>&#xA0;=&#xA0;<span class="blue-span">new&#xA0;</span><span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="blue-span">let&#xA0;</span><span class="light-blue-span">rand</span>&#xA0;=&#xA0;<span class="light-green-span">Math</span>.<span class="dark-yellow-span">random</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">if&#xA0;</span><span class="yellow-span">(</span><span class="light-blue-span">rand</span>&#xA0;&#x3E;&#xA0;<span class="light-green-span">0.5</span><span class="yellow-span">) {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">resolve</span><span class="yellow-span">(</span><span class="light-green-span">10</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;promise1 se splnil&#x22;</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span>&#xA0;<span class="purple-span">else&#xA0;</span><span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;promise1 se nesplnil</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span><br>
+                            <span class="yellow-span">})</span>;<br>
+                            <span class="blue-span">let&#xA0;</span><span class="light-blue-span">promise2</span>&#xA0;=&#xA0;<span class="blue-span">new</span>&#xA0;<span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="dark-yellow-span">setTimeout</span><span class="yellow-span">(</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-green-span">500</span>,&#xA0;<span class="light-green-span">20</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;<br>
+                            <span class="blue-span">let&#xA0;</span><span class="light-blue-span">promise3</span>&#xA0;=&#xA0;<span class="blue-span">new&#xA0;</span><span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">resolve</span><span class="yellow-span">(</span><span class="light-green-span">30</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;<br>
+                            <br>
+                            <span class="light-green-span">Promise</span>.<span class="dark-yellow-span">any</span><span class="yellow-span">([</span><span class="light-blue-span">promise1</span>,&#xA0;<span class="light-blue-span">promise2</span>,&#xA0;<span class="light-blue-span">promise3</span><span class="yellow-span">])</span><br>
+                            .<span class="dark-yellow-span">then</span><span class="yellow-span">((</span><span class="light-blue-span">hodnota</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;hodnota prvn&#xED;ho Promisu, kter&#xFD; byl spln&#x11B;n&#xFD;: &#x22;</span>&#xA0;+&#xA0;<span class="light-blue-span">hodnota</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span><br>
+                            .<span class="dark-yellow-span">catch</span><span class="yellow-span">((</span><span class="light-blue-span">err</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="light-blue-span">err</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Method-Any__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+                <h3 class="heading-tertiary">Promise.allSettled</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tato metoda bere jako parametr Iterable objekt (třeba pole) s Promisy a vrací Promise, který se splní až se všechny předané Promisy splní nebo nesplní. Tento Promise bude mít jako hodnotu pole objektů, které obsahují status promisu a hodnotu promisu nebo důvod proč se Promise nesplnil.</p>
+                <div class="code-with-console u-margin-bottom-small" id="Example-Method-AllSettled">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="blue-span">let&#xA0;</span><span class="light-blue-span">promise1</span>&#xA0;=&#xA0;<span class="blue-span">new&#xA0;</span><span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="blue-span">let&#xA0;</span><span class="light-blue-span">rand</span>&#xA0;=&#xA0;<span class="light-green-span">Math</span>.<span class="dark-yellow-span">random</span><span class="yellow-span">()</span>;<br>
+                            &#xA0; &#xA0;&#xA0;<span class="purple-span">if&#xA0;</span><span class="yellow-span">(</span><span class="light-blue-span">rand</span>&#xA0;&#x3E;&#xA0;<span class="light-green-span">0.5</span><span class="yellow-span">) {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">resolve</span><span class="yellow-span">(</span><span class="light-green-span">10</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;promise1 se splnil&#x22;</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span>&#xA0;<span class="purple-span">else&#xA0;</span><span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">(</span><span class="orange-span">&#x22;vygenerovan&#xE9; &#x10D;&#xED;slo je men&#x161;&#xED; nebo se rovn&#xE1; 0.5&#x22;</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;promise1 se nesplnil&#x22;</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span><br>
+                            <span class="yellow-span">})</span>;<br>
+                            <span class="blue-span">let</span>&#xA0;<span class="light-blue-span">promise2</span>&#xA0;=&#xA0;<span class="blue-span">new&#xA0;</span><span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="dark-yellow-span">setTimeout</span><span class="yellow-span">(</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-green-span">500</span>,&#xA0;<span class="light-green-span">20</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;<br>
+                            <span class="blue-span">let&#xA0;</span><span class="light-blue-span">promise3</span>&#xA0;=&#xA0;<span class="blue-span">new&#xA0;</span><span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">resolve</span><span class="yellow-span">(</span><span class="light-green-span">30</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;<br>
+                            <br>
+                            <span class="light-green-span">Promise</span>.<span class="dark-yellow-span">allSettled</span><span class="yellow-span">([</span><span class="light-blue-span">promise1</span>,&#xA0;<span class="light-blue-span">promise2</span>,&#xA0;<span class="light-blue-span">promise3</span><span class="yellow-span">])</span><br>
+                            .<span class="dark-yellow-span">then</span><span class="yellow-span">((</span><span class="light-blue-span">vysledky</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;informace o jednotliv&#xFD;ch Promisech:&#x22;</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">for&#xA0;</span><span class="yellow-span">(</span><span class="blue-span">let&#xA0;</span><span class="light-blue-span">vysledek</span>&#xA0;<span class="blue-span">of&#xA0;</span><span class="light-blue-span">vysledky</span><span class="yellow-span">) {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="light-blue-span">vysledek</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span><br>
+                            <span class="yellow-span">})</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Method-AllSettled__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+                <h3 class="heading-tertiary">Promise.race</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tato metoda bere jako parametr Iterable objekt (třeba pole) s Promisy a vrací Promise, který se jako první splní nebo nesplní.</p>
+                <div class="code-with-console u-margin-bottom-small" id="Example-Method-Race">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="blue-span">let&#xA0;</span><span class="light-blue-span">promise1</span>&#xA0;=&#xA0;<span class="blue-span">new&#xA0;</span><span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="dark-yellow-span">setTimeout</span><span class="yellow-span">(</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-green-span">1000</span>,&#xA0;<span class="orange-span">&#x22;prvn&#xED; Promise&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;<br>
+                            <span class="blue-span">let&#xA0;</span><span class="light-blue-span">promise2</span>&#xA0;=&#xA0;<span class="blue-span">new&#xA0;</span><span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="dark-yellow-span">setTimeout</span><span class="yellow-span">(</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-green-span">500</span>,&#xA0;<span class="orange-span">&#x22;druh&#xFD; Promise&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;<br>
+                            <br>
+                            <span class="light-green-span">Promise</span>.<span class="dark-yellow-span">race</span><span class="yellow-span">([</span><span class="light-blue-span">promise1</span>,&#xA0;<span class="light-blue-span">promise2</span><span class="yellow-span">])</span><br>
+                            .<span class="dark-yellow-span">then</span><span class="yellow-span">((</span><span class="light-blue-span">hodnotaPromisu</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="light-blue-span">hodnotaPromisu</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Method-Race__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+                <h3 class="heading-tertiary">Promise.resolve</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tato metoda vrací splněný Promise. Jako parametr můžeme předat hodnotu, kterou bude Promise mít.</p>
+                <div class="code-with-console u-margin-bottom-small" id="Example-Method-Resolve">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="light-green-span">Promise</span>.<span class="dark-yellow-span">resolve</span><span class="yellow-span">(</span><span class="orange-span">&#x22;spln&#x11B;no&#x22;</span><span class="yellow-span">)</span><br>
+                            .<span class="dark-yellow-span">then</span><span class="yellow-span">((</span><span class="light-blue-span">hodnota</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="light-blue-span">hodnota</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Method-Resolve__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+                <h3 class="heading-tertiary">Promise.reject</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tato metoda vrací nesplněný Promise. Jako parametr můžeme předat hodnotu, kterou bude Promise mít.</p>
+                <div class="code-with-console u-margin-bottom-small" id="Example-Method-Reject">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="light-green-span">Promise</span>.<span class="dark-yellow-span">reject</span><span class="yellow-span">(</span><span class="orange-span">&#x22;nespln&#x11B;no&#x22;</span><span class="yellow-span">)</span><br>
+                            .<span class="dark-yellow-span">catch</span><span class="yellow-span">((</span><span class="light-blue-span">hodnota</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="light-blue-span">hodnota</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Method-Reject__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+
+                <!-- na konci tam udělám takový přehled vlastností a metod týkajících se Promisu -->
+                <!-- ještě vlastnosti Promisu -->
+                <!-- funkce then přijímá dva parametry, funkce, která se zavolá, když se Promise splní a funkce, která se zavolá když se Promise nesplní -->
+                <!-- tyto funkce nemusíme předávat, a funkce tedy jakoby nevrátí nic a vrátí se Promise -->
+                <!-- Poznámky o návratové hodnotě then zatím pro mě:
+                                pokud předaná funkce vrací hodnotu, tak se vrátí resolved Promise s hodnotou, kterou funkce vrátila
+                                pokud předaná funkce nevrací nic, tak se vrátí resolved Promise s žádnou hodnotou
+                                pokud předaná funkce vyhazuje error, tak se vrátí rejected Promise s vyhozeným errorem jako hodnotou
+                                pokud předaná funkce vrací resolved Promise, tak se vrátí resolved Promise, který bude mít stejnou hodnotu jakou má Promise vrácený předanou funkcí (pokud nějakou hodnotu má)
+                                pokud předaná funkce vrací rejected Promise, tak se vrátí rejected Promise, který bude mít stejnou hodnotu jakou má Promise vrácený předanou funkcí (pokud nějakou hodnotu má)
+                                pokud předaná funkce vrací pending Promise, tak funkce fetch počká do té doby než se Promise vyřeší a poté se vrátí Promise, který bude stejný jako vrácený Promise
+                 -->
+                 <!-- na konec přidám odkazy na MDN, kde by se mohli dozvědět více pokud by jim nebylo něco jasné -->
+            </main>
+        </div>
+    </div>
+    <footer class="footer">
+        Copyright &copy; by Jiří Satora
+    </footer>
+
+    <script src="../media/js/promisy-config.js"></script>
+    <script src="../media/js/code-with-console.js"></script>
+</body>
+</html>

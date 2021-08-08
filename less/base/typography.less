@@ -52,3 +52,14 @@ body {
         padding-right: 10rem;
     }
 }
+
+.unordered-list {
+    list-style-position: inside;
+    font-size: 1.6rem;
+    color: @colors[third-grey];
+    &__item {
+        &:not(:last-child) {
+            margin-bottom: .5rem;
+        }
+    }
+}
