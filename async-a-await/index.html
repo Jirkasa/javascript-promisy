@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../media/css/icofont.min.css">
+    <link rel="stylesheet" href="../media/css/style.css">
+
+    <title>JS Promisy - Async a Await</title>
+</head>
+<body>
+    <header class="header header--scrollable">
+        <div class="header__content">
+            <a href="../" class="home-link">JS Promisy</a>
+            <nav class="header-nav">
+                <ul>
+                    <li class="header-nav__item">
+                        <a href="../callback-hell/" class="header-nav__link">Callback Hell</a>
+                    </li>
+                    <li class="header-nav__item">
+                        <a href="../promisy/" class="header-nav__link">Promisy</a>
+                    </li>
+                    <li class="header-nav__item">
+                        <a href="../async-a-await/" class="header-nav__link header-nav__link--active">Async a Await</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="article-page">
+        <nav class="article-page__nav-side">
+            s
+        </nav>
+        <div class="article-page__content-side">
+            <main class="article-page__content">
+                <h1 class="heading-primary u-center-text u-margin-bottom-small">Async a Await</h1>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-medium">V tomto článku se dozvíte jak můžete psát Promisy s pomocí klíčových slov Async a Await. Jde o syntaktický cukřík, který nám psaní Promisů usnadňuje a náš kód navíc bude vypadat lépe.</p>
+                <h2 class="heading-secondary">Klíčové slovo async</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Klíčové slovo async můžeme použít, pokud chceme aby funkce vracela Promise. Stačí jej připsat před deklaraci funkce. Pokud v async funkci něco vrátíme, tak se to použije jako hodnota Promisu. Následující ukázka ukazuje funkci, která počítá součet dvou čísel. K této operaci bychom sice nepotřebovali aby funkce vracela Promise, ale v této ukázce jsem to tak udělal abych ukázal, že když před funkci napíšeme klíčové slovo async, funkce bude vracet Promise.</p>
+                <div class="code-with-console u-margin-bottom-small" id="Example-Async-Function">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="blue-span">async function&#xA0;</span><span class="dark-yellow-span">soucet</span><span class="yellow-span">(</span><span class="light-blue-span">cislo1</span>,&#xA0;<span class="light-blue-span">cislo2</span><span class="yellow-span">) {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">return&#xA0;</span><span class="light-blue-span">cislo1</span>&#xA0;+&#xA0;<span class="light-blue-span">cislo2</span>;<br>
+                            <span class="yellow-span">}</span><br>
+                            <br>
+                            <span class="dark-yellow-span">soucet</span><span class="yellow-span">(</span><span class="light-green-span">2</span>,&#xA0;<span class="light-green-span">1</span><span class="yellow-span">)</span><br>
+                            .<span class="dark-yellow-span">then</span><span class="yellow-span">((</span><span class="light-blue-span">vysledek</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;v&#xFD;sledek: &#x22;</span>&#xA0;+&#xA0;<span class="light-blue-span">vysledek</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Async-Function__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud v async funkci vrátíme nějakou hodnotu nebo nevrátíme nic, tak se vrátí splněný Promise. Pokud bychom ale v async funkci vyhodili chybu, tak se vrátí nesplněný Promise.</p>
+                <div class="code-with-console u-margin-bottom-medium" id="Example-Async-Function-Throw-Error">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="blue-span">async function&#xA0;</span><span class="dark-yellow-span">soucet</span><span class="yellow-span">(</span><span class="light-blue-span">cislo1</span>,&#xA0;<span class="light-blue-span">cislo2</span><span class="yellow-span">) {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">if&#xA0;</span><span class="yellow-span">(</span><span class="blue-span">typeof&#xA0;</span><span class="light-blue-span">cislo1</span>&#xA0;!==&#xA0;<span class="orange-span">&#x22;number&#x22;</span>&#xA0;||&#xA0;<span class="blue-span">typeof</span>&#xA0;<span class="light-blue-span">cislo2</span>&#xA0;!==&#xA0;<span class="orange-span">&#x22;number&#x22;</span><span class="yellow-span">) {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">throw</span>&#xA0;<span class="orange-span">&#x22;nejedn&#xE1; se o &#x10D;&#xED;slo&#x22;</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">return&#xA0;</span><span class="light-blue-span">cislo1</span>&#xA0;+&#xA0;<span class="light-blue-span">cislo2</span>;<br>
+                            <span class="yellow-span">}</span><br>
+                            <br>
+                            <span class="dark-yellow-span">soucet</span><span class="yellow-span">(</span><span class="orange-span">&#x22;dva&#x22;</span>,&#xA0;<span class="light-green-span">1</span><span class="yellow-span">)</span><br>
+                            .<span class="dark-yellow-span">then</span><span class="yellow-span">((</span><span class="light-blue-span">vysledek</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;v&#xFD;sledek: &#x22;</span>&#xA0;+&#xA0;<span class="light-blue-span">vysledek</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span><br>
+                            .<span class="dark-yellow-span">catch</span><span class="yellow-span">((</span><span class="light-blue-span">err</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="light-blue-span">err</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Async-Function-Throw-Error__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+                <h2 class="heading-secondary">Klíčové slovo await</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí klíčového slova await můžeme pozastavit provádění kódu uvnitř async funkce do té doby než se provede nějaká asynchronní operace. Pokud před nějaký Promise v async funkci napíšeme klíčové slovo await, tak se provádění kódu zastaví do té doby než se Promise splní.</p>
+                <div class="code-with-console u-margin-bottom-small" id="Example-Await">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="blue-span">function</span>&#xA0;<span class="dark-yellow-span">pockejChvili</span><span class="yellow-span">() {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">return</span>&#xA0;<span class="blue-span">new&#xA0;</span><span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="dark-yellow-span">setTimeout</span><span class="yellow-span">(</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-green-span">1000</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">})</span>;<br>
+                            <span class="yellow-span">}</span><br>
+                            <br>
+                            <span class="blue-span">async function&#xA0;</span><span class="dark-yellow-span">postupneVypis</span><span class="yellow-span">() {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;prvn&#xED;&#x22;</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">await&#xA0;</span><span class="dark-yellow-span">pockejChvili</span><span class="yellow-span">()</span>;&#xA0;<span class="grey-span">// funkce pockejChvili vrac&#xED; Promise, po&#x10D;k&#xE1;me a&#x17E; se spln&#xED; ne&#x17E; budeme pokra&#x10D;ovat d&#xE1;l</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;druh&#xFD;&#x22;</span><span class="yellow-span">)</span>;<br>
+                            &#xA0; &#xA0;&#xA0;<span class="purple-span">await&#xA0;</span><span class="dark-yellow-span">pockejChvili</span><span class="yellow-span">()</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="orange-span">&#x22;t&#x159;et&#xED;&#x22;</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">}</span><br>
+                            <br>
+                            <span class="dark-yellow-span">postupneVypis</span><span class="yellow-span">()</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Await__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud Promise před který umístíme klíčové slovo await vrátí nesplněný Promise, tak async funkce ukončí provádění kódu a vrátí nesplněný Promise.</p>
+                <div class="code-with-console u-margin-bottom-small" id="Example-Await-Reject">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="blue-span">function&#xA0;</span><span class="dark-yellow-span">vypisSoucetAChviliPockej</span><span class="yellow-span">(</span><span class="light-blue-span">cislo1</span>,&#xA0;<span class="light-blue-span">cislo2</span><span class="yellow-span">) {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">return&#xA0;</span><span class="blue-span">new&#xA0;</span><span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">if&#xA0;</span><span class="yellow-span">(</span><span class="blue-span">typeof&#xA0;</span><span class="light-blue-span">cislo1</span>&#xA0;!==&#xA0;<span class="orange-span">&#x22;number&#x22;</span>&#xA0;||&#xA0;<span class="blue-span">typeof&#xA0;</span><span class="light-blue-span">cislo2&#xA0;</span>!==&#xA0;<span class="orange-span">&#x22;number&#x22;</span><span class="yellow-span">) {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">return&#xA0;</span><span class="dark-yellow-span">reject</span><span class="yellow-span">(</span><span class="orange-span">&#x22;nejedn&#xE1; se o &#x10D;&#xED;slo&#x22;</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="light-blue-span">cislo1&#xA0;</span>+&#xA0;<span class="light-blue-span">cislo2</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="dark-yellow-span">setTimeout</span><span class="yellow-span">(</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-green-span">1000</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">})</span>;<br>
+                            <span class="yellow-span">}</span><br>
+                            <br>
+                            <span class="blue-span">async function</span>&#xA0;<span class="dark-yellow-span">postupneVypis</span><span class="yellow-span">() {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">await&#xA0;</span><span class="dark-yellow-span">vypisSoucetAChviliPockej</span><span class="yellow-span">(</span><span class="light-green-span">2</span>,&#xA0;<span class="light-green-span">2</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">await&#xA0;</span><span class="dark-yellow-span">vypisSoucetAChviliPockej</span><span class="yellow-span">(</span><span class="orange-span">&#x22;jedna&#x22;</span>,&#xA0;<span class="light-green-span">2</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">await&#xA0;</span><span class="dark-yellow-span">vypisSoucetAChviliPockej</span><span class="yellow-span">(</span><span class="light-green-span">3</span>,&#xA0;<span class="light-green-span">2</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">}</span><br>
+                            <br>
+                            <span class="dark-yellow-span">postupneVypis</span><span class="yellow-span">()</span><br>
+                            .<span class="dark-yellow-span">catch</span><span class="yellow-span">((</span><span class="light-blue-span">err</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="light-blue-span">err</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">})</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Await-Reject__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud nechceme aby se kód uvnitř async funkce při nesplnění Promisu přestal provádět, tak musíme klíčové slovo await obalit do try catch bloku.</p>
+                <div class="code-with-console u-margin-bottom-small" id="Example-Await-Reject-Try-Catch">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="blue-span">function&#xA0;</span><span class="dark-yellow-span">vypisSoucetAChviliPockej</span><span class="yellow-span">(</span><span class="light-blue-span">cislo1</span>,&#xA0;<span class="light-blue-span">cislo2</span><span class="yellow-span">) {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">return&#xA0;</span><span class="blue-span">new&#xA0;</span><span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">if&#xA0;</span><span class="yellow-span">(</span><span class="blue-span">typeof&#xA0;</span><span class="light-blue-span">cislo1</span>&#xA0;!==&#xA0;<span class="orange-span">&#x22;number&#x22;</span>&#xA0;||&#xA0;<span class="blue-span">typeof&#xA0;</span><span class="light-blue-span">cislo2&#xA0;</span>!==&#xA0;<span class="orange-span">&#x22;number&#x22;</span><span class="yellow-span">) {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">return&#xA0;</span><span class="dark-yellow-span">reject</span><span class="yellow-span">(</span><span class="orange-span">&#x22;nejedn&#xE1; se o &#x10D;&#xED;slo&#x22;</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="light-blue-span">cislo1&#xA0;</span>+&#xA0;<span class="light-blue-span">cislo2</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="dark-yellow-span">setTimeout</span><span class="yellow-span">(</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-green-span">1000</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">})</span>;<br>
+                            <span class="yellow-span">}</span><br>
+                            <br>
+                            <span class="blue-span">async function</span>&#xA0;<span class="dark-yellow-span">postupneVypis</span><span class="yellow-span">() {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">await&#xA0;</span><span class="dark-yellow-span">vypisSoucetAChviliPockej</span><span class="yellow-span">(</span><span class="light-green-span">2</span>,&#xA0;<span class="light-green-span">2</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">try</span>&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">await&#xA0;</span><span class="dark-yellow-span">vypisSoucetAChviliPockej</span><span class="yellow-span">(</span><span class="orange-span">&#x22;jedna&#x22;</span>,&#xA0;<span class="light-green-span">2</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}&#xA0;</span><span class="purple-span">catch&#xA0;</span><span class="yellow-span">(</span><span class="light-blue-span">err</span><span class="yellow-span">) {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="light-blue-span">err</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">await&#xA0;</span><span class="dark-yellow-span">vypisSoucetAChviliPockej</span><span class="yellow-span">(</span><span class="light-green-span">3</span>,&#xA0;<span class="light-green-span">2</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">}</span><br>
+                            <br>
+                            <span class="dark-yellow-span">postupneVypis</span><span class="yellow-span">()</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Await-Reject-Try-Catch__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud Promise u kterého používáme klíčové slovo await obsahuje nějakou hodnotu, tak ji můžeme přiřadit do proměnné, jak ukazuje následující ukázka.</p>
+                <div class="code-with-console" id="Example-Await-Get-Value">
+                    <div class="code-with-console__code-box">
+                        <div class="code-with-console__code">
+                            <span class="blue-span">function</span>&#xA0;<span class="dark-yellow-span">pockejSekunduAVratSoucet</span><span class="yellow-span">(</span><span class="light-blue-span">cislo1</span>,&#xA0;<span class="light-blue-span">cislo2</span><span class="yellow-span">) {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="purple-span">return&#xA0;</span><span class="blue-span">new&#xA0;</span><span class="light-green-span">Promise</span><span class="yellow-span">((</span><span class="light-blue-span">resolve</span>,&#xA0;<span class="light-blue-span">reject</span><span class="yellow-span">)</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="dark-yellow-span">setTimeout</span><span class="yellow-span">(()</span>&#xA0;=&#x3E;&#xA0;<span class="yellow-span">{</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">resolve</span><span class="yellow-span">(</span><span class="light-blue-span">cislo1</span>&#xA0;+&#xA0;<span class="light-blue-span">cislo2</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">}</span>,&#xA0;<span class="light-green-span">1000</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="yellow-span">})</span>;<br>
+                            <span class="yellow-span">}</span><br>
+                            <br>
+                            <span class="blue-span">async function</span>&#xA0;<span class="dark-yellow-span">postupneVypis</span><span class="yellow-span">() {</span><br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="blue-span">let&#xA0;</span><span class="light-blue-span">soucet1</span>&#xA0;=&#xA0;<span class="purple-span">await</span>&#xA0;<span class="dark-yellow-span">pockejSekunduAVratSoucet</span><span class="yellow-span">(</span><span class="light-green-span">2</span>,&#xA0;<span class="light-green-span">1</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="light-blue-span">soucet1</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="blue-span">let</span>&#xA0;<span class="light-blue-span">soucet2</span>&#xA0;=&#xA0;<span class="purple-span">await</span>&#xA0;<span class="dark-yellow-span">pockejSekunduAVratSoucet</span><span class="yellow-span">(</span><span class="light-green-span">3</span>,&#xA0;<span class="light-green-span">4</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="light-blue-span">soucet2</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="blue-span">let</span>&#xA0;<span class="light-blue-span">soucet3</span>&#xA0;=&#xA0;<span class="purple-span">await&#xA0;</span><span class="dark-yellow-span">pockejSekunduAVratSoucet</span><span class="yellow-span">(</span><span class="light-green-span">5</span>,&#xA0;<span class="light-green-span">6</span><span class="yellow-span">)</span>;<br>
+                            &#xA0;&#xA0;&#xA0;&#xA0;<span class="light-blue-span">console</span>.<span class="dark-yellow-span">log</span><span class="yellow-span">(</span><span class="light-blue-span">soucet3</span><span class="yellow-span">)</span>;<br>
+                            <span class="yellow-span">}</span><br>
+                            <br>
+                            <span class="dark-yellow-span">postupneVypis</span><span class="yellow-span">()</span>;
+                        </div>
+                        <button class="code-with-console__play-btn"><i class="icofont-ui-play"></i></button>
+                        <button class="code-with-console__reset-btn"><i class="icofont-refresh"></i></button>
+                    </div>
+                    <div class="code-with-console__console" id="Example-Await-Get-Value__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <footer class="footer">
+        Copyright &copy; by Jiří Satora
+    </footer>
+
+    <script src="../media/js/async-a-await-config.js"></script>
+    <script src="../media/js/code-with-console.js"></script>
+</body>
+</html>

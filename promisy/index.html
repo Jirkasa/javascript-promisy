@@ -23,7 +23,7 @@
                         <a href="../promisy/" class="header-nav__link header-nav__link--active">Promisy</a>
                     </li>
                     <li class="header-nav__item">
-                        <a href="#" class="header-nav__link">Async a Await</a>
+                        <a href="../async-a-await/" class="header-nav__link">Async a Await</a>
                     </li>
                 </ul>
             </nav>
@@ -389,7 +389,7 @@
                 </div>
                 <h3 class="heading-tertiary">Promise.reject</h3>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tato metoda vrací nesplněný Promise. Jako parametr můžeme předat hodnotu, kterou bude Promise mít.</p>
-                <div class="code-with-console u-margin-bottom-small" id="Example-Method-Reject">
+                <div class="code-with-console" id="Example-Method-Reject">
                     <div class="code-with-console__code-box">
                         <div class="code-with-console__code">
                             <span class="light-green-span">Promise</span>.<span class="dark-yellow-span">reject</span><span class="yellow-span">(</span><span class="orange-span">&#x22;nespln&#x11B;no&#x22;</span><span class="yellow-span">)</span><br>
@@ -402,19 +402,6 @@
                     </div>
                     <div class="code-with-console__console" id="Example-Method-Reject__Console">&gt;<noscript> pro spuštění ukázky je potřeba JavaScript</noscript></div>
                 </div>
-
-                <!-- na konci tam udělám takový přehled vlastností a metod týkajících se Promisu -->
-                <!-- ještě vlastnosti Promisu -->
-                <!-- funkce then přijímá dva parametry, funkce, která se zavolá, když se Promise splní a funkce, která se zavolá když se Promise nesplní -->
-                <!-- tyto funkce nemusíme předávat, a funkce tedy jakoby nevrátí nic a vrátí se Promise -->
-                <!-- Poznámky o návratové hodnotě then zatím pro mě:
-                                pokud předaná funkce vrací hodnotu, tak se vrátí resolved Promise s hodnotou, kterou funkce vrátila
-                                pokud předaná funkce nevrací nic, tak se vrátí resolved Promise s žádnou hodnotou
-                                pokud předaná funkce vyhazuje error, tak se vrátí rejected Promise s vyhozeným errorem jako hodnotou
-                                pokud předaná funkce vrací resolved Promise, tak se vrátí resolved Promise, který bude mít stejnou hodnotu jakou má Promise vrácený předanou funkcí (pokud nějakou hodnotu má)
-                                pokud předaná funkce vrací rejected Promise, tak se vrátí rejected Promise, který bude mít stejnou hodnotu jakou má Promise vrácený předanou funkcí (pokud nějakou hodnotu má)
-                                pokud předaná funkce vrací pending Promise, tak funkce fetch počká do té doby než se Promise vyřeší a poté se vrátí Promise, který bude stejný jako vrácený Promise
-                 -->
                  <!-- na konec přidám odkazy na MDN, kde by se mohli dozvědět více pokud by jim nebylo něco jasné -->
             </main>
         </div>
