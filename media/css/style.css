@@ -66,6 +66,11 @@ body {
   text-transform: uppercase;
   color: #fff;
 }
+@media (max-width: 28.75em) {
+  .home-welcome-heading {
+    font-size: 2.8rem;
+  }
+}
 .home-welcome-heading__part {
   display: inline-block;
   padding: 0.5rem 1.5rem;
@@ -519,9 +524,11 @@ body {
 }
 .home-welcome-section {
   height: 100vh;
+  min-height: 55rem;
   max-height: 100rem;
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../../media/img/CodeBackground.jpg);
   background-size: cover;
+  background-position-x: center;
   position: relative;
 }
 .home-welcome-section__content {
@@ -542,6 +549,11 @@ body {
   width: 100%;
   margin: 0 auto;
   padding: 3rem;
+}
+@media (max-width: 21.875em) {
+  .home-articles-section__content {
+    padding: 3rem 2rem;
+  }
 }
 .home-articles-section__horizontal-rule {
   max-width: 10rem;
