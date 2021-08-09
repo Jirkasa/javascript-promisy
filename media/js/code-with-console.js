@@ -1,10 +1,3 @@
-for (let config of codeWithConsoleConfig) {
-    // setup play button
-    let playBtn = document.getElementById(config.elementId).getElementsByClassName("code-with-console__play-btn")[0];
-    playBtn.addEventListener("click", config.func.bind(config));
-    // setup reset button
-    let resetBtn = document.getElementById(config.elementId).getElementsByClassName("code-with-console__reset-btn")[0];
-    resetBtn.addEventListener("click", () => {
-        config.consoleElement.innerHTML = "&gt;";
-    });
-}
+var $jscomp=$jscomp||{};$jscomp.scope={};$jscomp.arrayIteratorImpl=function(a){var b=0;return function(){return b<a.length?{done:!1,value:a[b++]}:{done:!0}}};$jscomp.arrayIterator=function(a){return{next:$jscomp.arrayIteratorImpl(a)}};$jscomp.makeIterator=function(a){var b="undefined"!=typeof Symbol&&Symbol.iterator&&a[Symbol.iterator];return b?b.call(a):$jscomp.arrayIterator(a)};
+for(var $jscomp$loop$1={},$jscomp$iter$0=$jscomp.makeIterator(codeWithConsoleConfig),$jscomp$key$config=$jscomp$iter$0.next();!$jscomp$key$config.done;$jscomp$loop$1={$jscomp$loop$prop$config$2:$jscomp$loop$1.$jscomp$loop$prop$config$2},$jscomp$key$config=$jscomp$iter$0.next()){$jscomp$loop$1.$jscomp$loop$prop$config$2=$jscomp$key$config.value;var playBtn=document.getElementById($jscomp$loop$1.$jscomp$loop$prop$config$2.elementId).getElementsByClassName("code-with-console__play-btn")[0];playBtn.addEventListener("click",
+$jscomp$loop$1.$jscomp$loop$prop$config$2.func.bind($jscomp$loop$1.$jscomp$loop$prop$config$2));var resetBtn=document.getElementById($jscomp$loop$1.$jscomp$loop$prop$config$2.elementId).getElementsByClassName("code-with-console__reset-btn")[0];resetBtn.addEventListener("click",function(a){return function(){a.$jscomp$loop$prop$config$2.consoleElement.innerHTML="&gt;"}}($jscomp$loop$1))};

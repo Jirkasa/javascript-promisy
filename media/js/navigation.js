@@ -1,9 +1,3 @@
-const navigation = document.getElementsByClassName("navigation")[0];
-const navigationLinks = navigation.getElementsByClassName("navigation__link");
-const navigationCheckbox = document.getElementById("Navigation");
-
-for (let navigationLink of navigationLinks) {
-    navigationLink.addEventListener("click", () => {
-        navigationCheckbox.checked = false;
-    });
-}
+var $jscomp=$jscomp||{};$jscomp.scope={};$jscomp.arrayIteratorImpl=function(a){var b=0;return function(){return b<a.length?{done:!1,value:a[b++]}:{done:!0}}};$jscomp.arrayIterator=function(a){return{next:$jscomp.arrayIteratorImpl(a)}};$jscomp.makeIterator=function(a){var b="undefined"!=typeof Symbol&&Symbol.iterator&&a[Symbol.iterator];return b?b.call(a):$jscomp.arrayIterator(a)};
+for(var navigation=document.getElementsByClassName("navigation")[0],navigationLinks=navigation.getElementsByClassName("navigation__link"),navigationCheckbox=document.getElementById("Navigation"),$jscomp$iter$0=$jscomp.makeIterator(navigationLinks),$jscomp$key$navigationLink=$jscomp$iter$0.next();!$jscomp$key$navigationLink.done;$jscomp$key$navigationLink=$jscomp$iter$0.next()){var navigationLink=$jscomp$key$navigationLink.value;navigationLink.addEventListener("click",function(){navigationCheckbox.checked=
+!1})};
