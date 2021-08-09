@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes maximum-scale=2.2 minimum-scale=1.0">
 
     <link rel="stylesheet" href="../media/css/icofont.min.css">
     <link rel="stylesheet" href="../media/css/style.css">
@@ -32,6 +32,7 @@
         </div>
     </header>
     <div class="article-page">
+        <input type="checkbox" id="Navigation" class="navigation-checkbox">
         <nav class="article-page__nav-side">
             <ul class="navigation">
                 <li class="navigation__item">
@@ -42,6 +43,7 @@
                 </li>
             </ul>
         </nav>
+        <label for="Navigation" class="navigation-btn"><i class="icofont-rounded-right"></i></label>
         <div class="article-page__content-side">
             <main class="article-page__content">
                 <h1 class="heading-primary u-center-text u-margin-bottom-small">Async a Await</h1>
@@ -213,5 +215,6 @@
 
     <script src="../media/js/async-a-await-config.js"></script>
     <script src="../media/js/code-with-console.js"></script>
+    <script src="../media/js/navigation.js"></script>
 </body>
 </html>

@@ -9,12 +9,21 @@
     border: 4px solid darken(@colors[light-blue], 20%);
     border-radius: 4px;
 
+    @media (max-width: #pxToEm(500)[]) {
+        flex-direction: column;
+    }
+
     &__code-box {
         flex: 0 0 50%;
         border-right: 2px solid darken(@colors[light-blue], 20%);
 
         position: relative;
         overflow-x: auto;
+
+        @media (max-width: #pxToEm(500)[]) {
+            border-right: 0;
+            border-bottom: 2px solid darken(@colors[light-blue], 20%);
+        }
     }
 
     &__code {
@@ -52,6 +61,12 @@
         padding: .5rem;
         white-space: nowrap;
         overflow-x: auto;
+
+        @media (max-width: #pxToEm(500)[]) {
+            border-left: 0;
+            border-top: 2px solid darken(@colors[light-blue], 20%);
+            min-height: 10rem;
+        }
 
         // width
         &::-webkit-scrollbar {
