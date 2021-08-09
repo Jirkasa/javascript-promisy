@@ -191,6 +191,11 @@ body {
   z-index: 30;
   background-color: rgba(60, 70, 78, 0.8);
 }
+@media print {
+  .header {
+    display: none;
+  }
+}
 .header--scrollable {
   position: fixed;
   background-image: linear-gradient(rgba(60, 70, 78, 0.8), rgba(60, 70, 78, 0.8)), linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../../media/img/CodeBackground.jpg);
@@ -217,6 +222,11 @@ body {
   background-color: #353f47;
   color: #7d8c96;
   padding: 1rem;
+}
+@media print {
+  .footer {
+    display: none;
+  }
 }
 .home-link:link,
 .home-link:visited {
@@ -289,7 +299,7 @@ body {
   border: 4px solid #00a1e4;
   border-radius: 4px;
 }
-@media (max-width: 31.25em) {
+@media (max-width: 31.25em), print {
   .code-with-console {
     flex-direction: column;
   }
@@ -300,10 +310,11 @@ body {
   position: relative;
   overflow-x: auto;
 }
-@media (max-width: 31.25em) {
+@media (max-width: 31.25em), print {
   .code-with-console__code-box {
     border-right: 0;
     border-bottom: 2px solid #00a1e4;
+    overflow: hidden;
   }
 }
 .code-with-console__code {
@@ -334,7 +345,7 @@ body {
   white-space: nowrap;
   overflow-x: auto;
 }
-@media (max-width: 31.25em) {
+@media (max-width: 31.25em), print {
   .code-with-console__console {
     border-left: 0;
     border-top: 2px solid #00a1e4;
@@ -570,6 +581,11 @@ body {
     display: block;
   }
 }
+@media print {
+  .navigation-btn {
+    display: none;
+  }
+}
 .navigation-btn::before {
   content: "";
   display: block;
@@ -610,6 +626,11 @@ body {
   background-position-x: center;
   position: relative;
 }
+@media print {
+  .home-welcome-section {
+    display: none;
+  }
+}
 .home-welcome-section__content {
   max-width: 114rem;
   width: 100%;
@@ -642,6 +663,11 @@ body {
   height: 4px;
   background-color: #7a8991;
 }
+@media print {
+  .home-articles-section__horizontal-rule {
+    -webkit-print-color-adjust: exact;
+  }
+}
 .home-articles-section__text {
   max-width: 95rem;
   width: 100%;
@@ -662,6 +688,11 @@ body {
   margin-top: 6rem;
   min-height: calc(100vh - 6rem - 3.9rem);
 }
+@media print {
+  .article-page {
+    margin-top: 0;
+  }
+}
 .article-page__nav-side {
   flex: 0 0 28rem;
   background-color: #18bbff;
@@ -680,6 +711,11 @@ body {
     border-bottom-right-radius: 5px;
     border: 4px solid #007db1;
     border-top: none;
+  }
+}
+@media print {
+  .article-page__nav-side {
+    display: none;
   }
 }
 .article-page__content-side {

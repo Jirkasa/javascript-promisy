@@ -7,6 +7,10 @@
 
     background-color: rgba(@colors[grey], .8);
 
+    @media print {
+        display: none;
+    }
+
     &--scrollable {
         position: fixed;
         background-image: linear-gradient(rgba(@colors[grey], .8), rgba(@colors[grey], .8)), linear-gradient(rgba(darken(@colors[grey], 30%), .7), rgba(darken(@colors[grey], 30%), .7)), url(../../media/img/CodeBackground.jpg);

@@ -3,6 +3,10 @@
     margin-top: 6rem;
     min-height: calc(100vh - 6rem - 3.9rem);
 
+    @media print {
+        margin-top: 0;
+    }
+
     &__nav-side {
         flex: 0 0 28rem;
         background-color: darken(@colors[light-blue], 10%);
@@ -20,6 +24,9 @@
             border-bottom-right-radius: 5px;
             border: 4px solid darken(@colors[light-blue], 30%);
             border-top: none;
+        }
+        @media print {
+            display: none;
         }
     }
 

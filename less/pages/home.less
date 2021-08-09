@@ -10,6 +10,10 @@
 
     position: relative;
 
+    @media print {
+        display: none;
+    }
+
     &__content {
         max-width: @grid-width;
         width: 100%;
@@ -42,6 +46,10 @@
         border: none;
         height: 4px;
         background-color: lighten(@colors[third-grey], 10%);
+
+        @media print {
+            -webkit-print-color-adjust: exact;
+        }
     }
 
     &__text {
