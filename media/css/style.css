@@ -5,6 +5,12 @@
 1200 - 1800px;  normal styles
 1800px + ;          Big desktop
 */
+/*
+    centers element using position absolute
+*/
+/*
+    converts pixels to em units for media queries
+*/
 *,
 *::before,
 *::after {
@@ -127,8 +133,8 @@ body {
   }
 }
 .unordered-list {
-  list-style-position: inside;
   font-size: 1.6rem;
+  list-style-position: inside;
   color: #626f76;
 }
 .unordered-list__item:not(:last-child) {
@@ -199,7 +205,6 @@ body {
     transform: translateX(2rem) rotate(-2deg);
   }
   100% {
-    opacity: 1;
     transform: translateX(0);
   }
 }
@@ -213,7 +218,6 @@ body {
     transform: translateX(-2rem) rotate(2deg);
   }
   100% {
-    opacity: 1;
     transform: translateX(0);
   }
 }
@@ -497,9 +501,9 @@ body {
 .article-card {
   background-color: #4c5862;
   text-align: center;
+  padding: 2rem;
   border: 4px solid #8b98a1;
   border-radius: 4px;
-  padding: 2rem;
 }
 .article-card__heading {
   font-size: 2.5rem;

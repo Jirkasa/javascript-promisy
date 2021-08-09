@@ -80,7 +80,6 @@ body {
                 padding-right: 5rem;
             }
         );
-
         @media (max-width: #pxToEm(420)[]) {
             padding-right: 0;
         }
@@ -88,9 +87,11 @@ body {
 }
 
 .unordered-list {
-    list-style-position: inside;
     font-size: 1.6rem;
+
+    list-style-position: inside;
     color: @colors[third-grey];
+
     &__item {
         &:not(:last-child) {
             margin-bottom: .5rem;
@@ -101,6 +102,7 @@ body {
 .anchor {
     &:link, &:visited {
         font-weight: 700;
+        
         color: darken(@colors[light-blue], 20%);
         text-decoration: none;
         transition: all .1s;
