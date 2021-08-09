@@ -11,6 +11,12 @@
         position: fixed;
         background-image: linear-gradient(rgba(@colors[grey], .8), rgba(@colors[grey], .8)), linear-gradient(rgba(darken(@colors[grey], 30%), .7), rgba(darken(@colors[grey], 30%), .7)), url(../../media/img/CodeBackground.jpg);
         background-size: cover;
+
+        @media (max-width: #pxToEm(550)[]) {
+            .header-nav {
+                position: fixed;
+            }
+        }
     }
 
     &__content {

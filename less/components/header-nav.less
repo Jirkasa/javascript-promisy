@@ -1,17 +1,46 @@
 .header-nav {
+
+    @media (max-width: #pxToEm(550)[]) {
+        position: absolute;
+        top: 6rem;
+        right: 0;
+        transform: translateX(100%);
+        transition: all .4s;
+        background-color: @colors[grey];
+        border-bottom: 2px solid darken(@colors[grey], 10%);
+        border-top: 2px solid darken(@colors[grey], 10%);
+        width: 100%;
+    }
+
     ul {
         display: flex;
         list-style: none;
+
+        @media (max-width: #pxToEm(550)[]) {
+            padding: 1rem;
+            padding-bottom: 0;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
     }
 
     &__item {
         &:not(:last-child) {
             margin-right: 1.5rem;
+
+            @media (max-width: #pxToEm(550)[]) {
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: #pxToEm(550)[]) {
+            margin-bottom: 1rem;
         }
     }
 
     &__link {
         &:link, &:visited {
+            display: inline-block;
             font-size: 1.7rem;
     
             text-transform: uppercase;
