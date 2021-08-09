@@ -79,6 +79,12 @@ body {
 .home-welcome-heading__part:not(:last-child) {
   margin-bottom: 1.5rem;
 }
+.home-welcome-heading__part--animated-to-right {
+  animation: moveInRight 1s 0.2s ease-in-out backwards;
+}
+.home-welcome-heading__part--animated-to-left {
+  animation: moveInLeft 1s 0.2s ease-in-out backwards;
+}
 .heading-primary {
   font-size: 3rem;
   text-transform: uppercase;
@@ -182,6 +188,34 @@ body {
 }
 .purple-span {
   color: #fa20d6;
+}
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(2rem) rotate(-2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(-2rem) rotate(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 .header {
   height: 6rem;

@@ -24,6 +24,13 @@ body {
         &:not(:last-child) {
             margin-bottom: 1.5rem;
         }
+
+        &--animated-to-right {
+            animation: moveInRight 1s .2s ease-in-out backwards;
+        }
+        &--animated-to-left {
+            animation: moveInLeft 1s .2s ease-in-out backwards;
+        }
     }
 }
 
